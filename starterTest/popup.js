@@ -1,5 +1,7 @@
 let allLinks = [];
 let visibleLinks = [];
+let test = '';
+let allInfo = [];
 
 // Display all links.
 function showLinks() {
@@ -47,13 +49,15 @@ function filterLinks() {
   showLinks();
 }
 
-chrome.extension.onRequest.addListener((links) => {
-  for (let index in links) {
-    allLinks.push(links[index]);
-  }
-  allLinks.sort();
+chrome.runtime.onMessage.addListener(function (msg, _, sendResponse) {
+  test = msg.greeting;
+  allInfo = [...JSON.parse(msg.greeting)];
+  allInfo.forEach((i) => {
+    allLinks.push(i.link);
+  });
   visibleLinks = allLinks;
   showLinks();
+  sendResponse({ farewell: allInfo });
 });
 
 // Set up event handlers and inject send_links.js into all frames in the active tab
@@ -62,7 +66,7 @@ window.onload = () => {
 
   chrome.windows.getCurrent(function (currentWindow) {
     chrome.tabs.query(
-      { active: true, windowId: currentWindow.id },
+      { active: true, currentWindow: true },
       function (activeTabs) {
         chrome.tabs.executeScript(activeTabs[0].id, {
           file: 'send_links.js',

@@ -5,6 +5,8 @@
 Note: use 'var' instead of 'let' or 'const'.
 If use 'let' or 'const', it will cause 'SyntaxError: Identifier 'xxx' has already been declared'
 when reload a page multiple times
+
+Note: sortedTitleObj is final object
 */
 
 var allHeadings = [...document.querySelectorAll('h1, h2,h3')];
@@ -78,7 +80,6 @@ links.forEach((l) => {
   });
   pathesWithoutPunc.push(subLink);
 });
-console.log('linkObjs', linkObjs);
 
 // get sorted title
 var sortedTitleObj = [];
@@ -96,12 +97,13 @@ var sortedTitle = sortedRawTitle.filter((t) => {
   }
   return false;
 });
-console.log('sortedTitle', sortedTitle);
-console.log('=====================');
-console.log('sortedTitleObj', sortedTitleObj);
+// console.log('sortedTitle', sortedTitle);
+// console.log('=====================');
+// console.log('sortedTitleObj', sortedTitleObj);
 
-/*
-Note: sortedTitleObj is final object, maybe need find a way to pass it to sidebar.html
-*/
-
-chrome.extension.sendRequest(links);
+chrome.runtime.sendMessage(
+  { greeting: JSON.stringify(sortedTitleObj) },
+  function (response) {
+    console.log('send successfully', response.farewell);
+  }
+);
