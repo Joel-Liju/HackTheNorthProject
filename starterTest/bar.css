@@ -1,0 +1,22 @@
+.sidebar{
+    z-index: 2349087294;
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    /* padding: 1px; */
+    width: 12em;
+    font-family: arial, sans-serif;
+    height: 30em;
+    overflow-wrap: break-word;
+    -webkit-box-shadow: 1px 1px 7px rgba(33, 33, 33, 0.7);  
+}
+
+.bartab{
+    z-index: 2349087294;
+    position: fixed;
+    background-color: grey;
+    width: 1em;
+    font-family: arial, sans-serif;
+    height: 2em;
+    overflow-wrap: break-word;
+    -webkit-box-shadow: 1px 1px 7px rgba(33, 33, 33, 0.7);  
+}

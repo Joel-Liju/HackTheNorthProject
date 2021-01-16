@@ -1,9 +1,20 @@
 {
-  "name": "GitDocParser",
-  "description": "Parse github doc and generate a sidebar",
-  "version": "0.1",
-  "minimum_chrome_version": "16.0.884",
-  "permissions": ["downloads", "<all_urls>"],
-  "browser_action": {"default_popup": "popup.html"},
+  "name": "Side bar",
+  "version": "0.0.1",
+  "description": "Take Notes on web pages!",
+  "permissions": ["tabs","activeTab","declarativeContent", "storage", "downloads"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+        "matches": ["<all_urls>"],
+        "css": ["bar.css"],
+        "js": ["bar.js"]
+    }],
   "manifest_version": 2
 }
