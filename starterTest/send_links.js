@@ -43,6 +43,11 @@ var sortedRawTitle = heading1Obj.map((h) => {
   return { title: h.title.split(/-|_/).join(' '), depth: h.depth };
 });
 
+//remove duplicate according to title property
+sortedRawTitle = sortedRawTitle.filter(
+  (it, index, self) => index === self.findIndex((t) => t.title === it.title)
+);
+
 var links = [].slice.apply(document.getElementsByTagName('a'));
 links = links.map(function (element) {
   var href = element.href;
@@ -63,7 +68,6 @@ var filteredlinks = links.filter((link) => {
 
 // filter out duplicated string
 links = Array.from(new Set(filteredlinks));
-// console.log(links); //test
 
 // mathing path and link
 var linkObjs = [];
@@ -105,6 +109,6 @@ chrome.runtime.sendMessage(
   { greeting: JSON.stringify(sortedTitleObj) },
   function (response) {
     // console.log('send successfully');
-    console.log('send successfully', response.farewell); //test
+    // console.log('send successfully', response.farewell); //test
   }
 );

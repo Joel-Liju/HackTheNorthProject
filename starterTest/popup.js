@@ -4,31 +4,30 @@ let test = '';
 let allInfo = [];
 
 // Display all links.
-function showLinks() {
+function showLinks(arr) {
   let ulTag = document.getElementById('contents');
-  console.log(ulTag);
-  for (let i = 0; i < visibleLinkObj.length; ++i) {
+
+  //remove childElt
+  while (ulTag.children.length >= 1) {
+    ulTag.removeChild(ulTag.children[ulTag.children.length - 1]);
+  }
+
+  console.log('after removing child', ulTag);
+  for (let i = 0; i < arr.length; ++i) {
     // create header tag
     let headerTag;
-    // test
-    // console.log('visibleLinkObj[i].depth', visibleLinkObj[i].depth);
-    // console.log('visibleLinkObj[i].title', visibleLinkObj[i].title);
-    // console.log('visibleLinkObj[i].link', visibleLinkObj[i].link);
-    switch (visibleLinkObj[i].depth) {
+    switch (arr[i].depth) {
       case '1':
         headerTag = document.createElement('h1');
-        console.log('match h1');
       case '2':
         headerTag = document.createElement('h2');
-        console.log('match h2');
       case '3':
         headerTag = document.createElement('h3');
-        console.log('match h3');
     }
     if (headerTag) {
-      headerTag.innerText = visibleLinkObj[i].title;
+      headerTag.innerText = arr[i].title;
       headerTag.onclick = function () {
-        chrome.tabs.update({ url: visibleLinkObj[i].link });
+        chrome.tabs.update({ url: arr[i].link });
       };
     }
 
@@ -44,29 +43,27 @@ function showLinks() {
 function filterLinks() {
   let filterValue = document.getElementById('filter').value;
 
-  let terms = filterValue.split(' ');
-  visibleLinkObj = allInfo.filter((i) => {
-    let link = i.link;
-    for (let termI = 0; termI < terms.length; ++termI) {
-      let term = terms[termI];
-      if (term.length != 0) {
-        let expected = term[0] != '-';
-        if (!expected) {
-          term = term.substr(1);
-          if (term.length == 0) {
-            continue;
-          }
-        }
-        let found = -1 !== link.indexOf(term);
-        if (found != expected) {
-          return false;
+  if (!filterValue) {
+    showLinks(allInfo);
+  } else {
+    let terms = filterValue.split(' ');
+    // console.log('entered terms', terms);
+    visibleLinkObj = allInfo.filter((i) => {
+      let parsedTitle = i.title;
+      let hasResult = true;
+      for (let idx = 0; idx < terms.length; ++idx) {
+        let term = terms[idx];
+        if (term.length != 0) {
+          hasResult = hasResult && -1 !== parsedTitle.indexOf(term);
+        } else {
+          hasResult = hasResult && true;
         }
       }
-    }
-    return true;
-  });
-
-  showLinks();
+      return hasResult;
+    });
+    // console.log('after filtering', visibleLinkObj);
+    showLinks(visibleLinkObj);
+  }
 }
 
 //initialize all variables
@@ -77,15 +74,15 @@ chrome.runtime.onMessage.addListener(function (msg, _, sendResponse) {
     allLinks.push(i.link);
   });
   visibleLinkObj = [...allInfo];
-  showLinks();
+  showLinks(visibleLinkObj);
   sendResponse({ farewell: visibleLinkObj }); //test
 });
 
 // Set up event handlers and inject send_links.js into all frames in the active tab
 window.onload = () => {
-  document.getElementById('filter').onkeyup = filterLinks;
+  document.getElementById('filter').oninput = filterLinks;
 
-  chrome.windows.getCurrent(function (currentWindow) {
+  chrome.windows.getCurrent(() => {
     chrome.tabs.query(
       { active: true, currentWindow: true },
       function (activeTabs) {
