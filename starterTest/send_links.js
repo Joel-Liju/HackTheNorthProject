@@ -112,3 +112,4 @@ chrome.runtime.sendMessage(
     // console.log('send successfully', response.farewell); //test
   }
 );
+localStorage.setItem("stuff",JSON.stringify(sortedTitleObj));

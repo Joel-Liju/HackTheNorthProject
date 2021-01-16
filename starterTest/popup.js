@@ -81,7 +81,7 @@ chrome.runtime.onMessage.addListener(function (msg, _, sendResponse) {
 // Set up event handlers and inject send_links.js into all frames in the active tab
 window.onload = () => {
   document.getElementById('filter').oninput = filterLinks;
-
+  console.log("hell");
   chrome.windows.getCurrent(() => {
     chrome.tabs.query(
       { active: true, currentWindow: true },
