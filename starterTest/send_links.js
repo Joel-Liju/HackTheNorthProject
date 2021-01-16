@@ -39,6 +39,7 @@ var parsedHeadings2 = allHeadings.map((heading) => {
 
 var headings = parsedHeadings1.concat(parsedHeadings2);
 
+
 var sortedRawTitle = heading1Obj.map((h) => {
   return { title: h.title.split(/-|_/).join(' '), depth: h.depth };
 });
@@ -47,6 +48,7 @@ var sortedRawTitle = heading1Obj.map((h) => {
 sortedRawTitle = sortedRawTitle.filter(
   (it, index, self) => index === self.findIndex((t) => t.title === it.title)
 );
+
 
 var links = [].slice.apply(document.getElementsByTagName('a'));
 links = links.map(function (element) {
@@ -69,7 +71,7 @@ var filteredlinks = links.filter((link) => {
 // filter out duplicated string
 links = Array.from(new Set(filteredlinks));
 
-// mathing path and link
+
 var linkObjs = [];
 var pathesWithoutPunc = [];
 links.forEach((l) => {
@@ -84,6 +86,7 @@ links.forEach((l) => {
   });
   pathesWithoutPunc.push(subLink);
 });
+
 
 // get sorted title
 var sortedTitleObj = [];
