@@ -1,22 +1,28 @@
 .sidebar{
     z-index: 2349087294;
     position: fixed;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(230, 230, 230);
+    border-radius: 25px;
+    border-style: solid;
+    border-color: rgb(30, 111, 187);
     /* padding: 1px; */
     width: 12em;
     font-family: arial, sans-serif;
     height: 30em;
     overflow-wrap: break-word;
-    -webkit-box-shadow: 1px 1px 7px rgba(33, 33, 33, 0.7);  
+    -webkit-box-shadow: 1px 1px 10px rgb(30, 111, 187);;  
 }
 
 .bartab{
     z-index: 2349087294;
+    border-radius: 5px 15px 15px 5px;
     position: fixed;
-    background-color: grey;
-    width: 1em;
+    background-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-color: rgb(30, 111, 187);
+    width: 0.5em;
     font-family: arial, sans-serif;
     height: 2em;
     overflow-wrap: break-word;
-    -webkit-box-shadow: 1px 1px 7px rgba(33, 33, 33, 0.7);  
+    -webkit-box-shadow: 1px 1px 10px rgb(30, 111, 187);
 }

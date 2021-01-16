@@ -12,12 +12,14 @@ body.prepend(bar);
 var tab = document.createElement("button");
 tab.setAttribute("class", "bartab");
 tab.style.left = "12em";
+tab.style.top = "2.5em";
 bar.prepend(tab);
 
 // create the tab that will be shown when the menu is closed
 var closedTab = document.createElement("button");
 closedTab.setAttribute("class", "bartab");
 closedTab.style.left = "0px";
+closedTab.style.top = "2.5em";
 closedTab.style.visibility = "hidden";
 body.prepend(closedTab);
 
