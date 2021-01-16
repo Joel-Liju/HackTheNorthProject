@@ -17,12 +17,19 @@
     z-index: 2349087294;
     border-radius: 5px 15px 15px 5px;
     position: fixed;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(51, 114, 185);
     border-style: solid;
     border-color: rgb(30, 111, 187);
-    width: 0.5em;
+    width: 0.4em;
     font-family: arial, sans-serif;
     height: 2em;
     overflow-wrap: break-word;
     -webkit-box-shadow: 1px 1px 10px rgb(30, 111, 187);
+}
+
+.filter{
+    position: relative;
+    width: 10em;
+    left: 10px;
+    top: 10px;
 }

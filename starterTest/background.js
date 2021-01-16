@@ -1,15 +1,5 @@
-
-var pageConditions = {
-  conditions: [
-    new chrome.declarativeContent.PageStateMatcher({
-      pageUrl: { schemes: ['https','http'] }
-    })
-  ],
-  actions: [new chrome.declarativeContent.ShowPageAction()]
-}
-
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([pageConditions]);
-  });
+chrome.browserAction.onClicked.addListener(async function() {
+  chrome.tabs.executeScript(null, {file: "bar.js"});
+  chrome.tabs.executeScript(null, {file: "send_links.js"});
+  chrome.tabs.executeScript(null, {file: "receive_links.js"});
 });

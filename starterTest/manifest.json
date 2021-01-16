@@ -1,20 +1,18 @@
 {
-  "name": "Side bar",
-  "version": "0.0.1",
-  "description": "Take Notes on web pages!",
-  "permissions": ["tabs","activeTab","declarativeContent", "storage", "downloads"],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+  "name": "GitDocParser",
+  "description": "Parse github doc and generate a sidebar",
+  "version": "0.1",
+  "minimum_chrome_version": "16.0.884",
+  "permissions": ["<all_urls>", "tabs", "activeTab"],
+  "manifest_version": 2,
+  "background" : {
+    "scripts" : ["background.js"]
   },
-  "page_action": {
-    "default_popup": "popup.html"
-  },
+  "browser_action": {},
   "content_scripts": [
     {
-        "matches": ["<all_urls>"],
-        "css": ["bar.css"],
-        "js": ["bar.js"]
-    }],
-  "manifest_version": 2
+      "matches": ["<all_urls>"],
+      "css": ["bar.css"]
+    }
+  ]
 }
