@@ -104,6 +104,7 @@ var sortedTitle = sortedRawTitle.filter((t) => {
 chrome.runtime.sendMessage(
   { greeting: JSON.stringify(sortedTitleObj) },
   function (response) {
-    console.log('send successfully', response.farewell);
+    // console.log('send successfully');
+    console.log('send successfully', response.farewell); //test
   }
 );
