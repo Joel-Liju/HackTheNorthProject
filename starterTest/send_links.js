@@ -35,7 +35,7 @@ var headings = parsedHeadings1.concat(parsedHeadings2);
 // }
 
 // var headings = generateLinkMarkup();
-console.log(headings);
+// console.log(headings);
 
 var links = [].slice.apply(document.getElementsByTagName('a'));
 links = links.map(function (element) {
@@ -62,6 +62,6 @@ var filteredlinks = links.filter((link) => {
 // links.sort();
 links = Array.from(new Set(links));
 
-console.log(links);
+// console.log(links);
 
 chrome.extension.sendRequest(links);

@@ -1,6 +1,21 @@
 let allLinks = [];
 let visibleLinks = [];
 
+function test(){
+  var t = document.getElementsByTagName("body")[0];
+  var s = document.createElement("div");
+  console.log("here");
+  s.setAttribute("id","testplease")
+ 
+  // for(let i =0;i<visibleLinks.length;i++){
+  //   let row = document.createElement("a");
+  //   row.setAttribute("href","#");
+  //   row.innerText = visibleLinks[i];
+  //   s.appendChild(row);
+  // }
+  t.prepend(s);
+}
+
 // Display all links.
 function showLinks() {
   let linksTable = document.getElementById('links');
@@ -17,6 +32,8 @@ function showLinks() {
     row.appendChild(col1);
     linksTable.appendChild(row);
   }
+  // console.log("here test again");
+  test();
 }
 
 // filter links and reshow links
