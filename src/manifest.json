@@ -5,8 +5,8 @@
   "minimum_chrome_version": "16.0.884",
   "permissions": ["<all_urls>", "tabs", "activeTab"],
   "manifest_version": 2,
-  "background" : {
-    "scripts" : ["background.js"]
+  "background": {
+    "scripts": ["background.js"]
   },
   "browser_action": {},
   "content_scripts": [
@@ -14,5 +14,7 @@
       "matches": ["<all_urls>"],
       "css": ["bar.css"]
     }
-  ]
+  ],
+
+  "icons": {"16": "icon16.png"}
 }

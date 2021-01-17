@@ -8,7 +8,7 @@
 .sidebar {
   z-index: 2349087294;
   position: fixed;
-  overflow:auto;
+  overflow: auto;
   width: 13em;
   height: 30em;
   background-color: rgb(230, 230, 230);
@@ -24,6 +24,7 @@
   z-index: 2349087294;
   border-radius: 5px 15px 15px 5px;
   position: fixed;
+  background-image: url('/icon16.png');
   background-color: rgb(30, 111, 187);
   overflow-wrap: break-word;
   -webkit-box-shadow: 1px 1px 10px rgb(30, 111, 187);
@@ -55,22 +56,22 @@ div::-webkit-scrollbar {
 
 /* Track */
 div::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
- 
+
 /* Handle */
 div::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 div::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 div::-webkit-scrollbar-track-piece:end {
   background: transparent;
-  margin-bottom: 22px; 
+  margin-bottom: 22px;
 }
 
 div::-webkit-scrollbar-track-piece:start {
