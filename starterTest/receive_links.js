@@ -59,7 +59,6 @@ function filterLinks() {
 var docLinks = localStorage.getItem('links');
 allInfo = JSON.parse(docLinks);
 allInfo.forEach((i) => {
-  console.log(i.link);
   visibleLinkObj.push(i);
 });
 showLinks();
