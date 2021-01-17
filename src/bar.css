@@ -62,6 +62,7 @@ div::-webkit-scrollbar-track {
 /* Handle */
 div::-webkit-scrollbar-thumb {
   background: #888;
+  border-radius: 10px;
 }
 
 /* Handle on hover */
