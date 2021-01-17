@@ -3,5 +3,7 @@
 
 This chrom extension gets all the Github documentation headers and conveniently puts them in a side menu for you!
 
-Authors: Joel Liju-Jacob, Rodrigo Vega, Yilu Liang, Samuel Ogunleye
+
+<h2> Authors </h2>
+Joel Liju-Jacob, Rodrigo Vega, Yilu Liang, Samuel Ogunleye
 
