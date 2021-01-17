@@ -31,7 +31,11 @@ function filterLinks() {
   let filterValue = document.getElementById('filter').value;
 
   if (!filterValue) {
-    showLinks(allInfo);
+    visibleLinkObj=[];
+    allInfo.forEach((i)=>{
+      visibleLinkObj.push(i);
+    });
+    showLinks();
   } else {
     let terms = filterValue.split(' ');
     visibleLinkObj = allInfo.filter((i) => {
@@ -47,7 +51,7 @@ function filterLinks() {
       }
       return hasResult;
     });
-    showLinks(visibleLinkObj);
+    showLinks();
   }
 }
 
