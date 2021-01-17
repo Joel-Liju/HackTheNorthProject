@@ -9,53 +9,23 @@ function showLinks() {
   let ulTag = document.getElementById('contents');
   console.log(ulTag);
   console.log(visibleLinkObj);
-  // for (let i = 0; i < visibleLinkObj.length; ++i) {
-  //   // create header tag
-  //   let headerTag;
-  //   // test
-  //   // console.log('visibleLinkObj[i].depth', visibleLinkObj[i].depth);
-  //   // console.log('visibleLinkObj[i].title', visibleLinkObj[i].title);
-  //   // console.log('visibleLinkObj[i].link', visibleLinkObj[i].link);
-  //   switch (visibleLinkObj[i].depth) {
-  //     case '1':
-  //       headerTag = document.createElement('h1');
-  //       console.log('match h1');
-  //     case '2':
-  //       headerTag = document.createElement('h2');
-  //       console.log('match h2');
-  //     case '3':
-  //       headerTag = document.createElement('h3');
-  //       console.log('match h3');
-  //   }
-  //   if (headerTag) {
-  //     headerTag.innerText = visibleLinkObj[i].title;
-  //     headerTag.onclick = function () {
-  //       chrome.tabs.update({ url: visibleLinkObj[i].link });
-  //     };
-  //   }
-
-  //   //create li tag
-  //   let liTag = document.createElement('li');
-
-  //   liTag.append(headerTag);
-  //   ulTag.append(liTag);
   while (ulTag.children.length >= 1) {
     ulTag.removeChild(ulTag.children[ulTag.children.length - 1]);
   }
 
-    for(i=0;i<visibleLinkObj.length;i++){
+    for(i=0; i<visibleLinkObj.length; i++){
       console.log(visibleLinkObj[i]["title"]);
       var line = document.createElement("div");
       var it = document.createElement("a");
       it.append(visibleLinkObj[i]["title"]);
       it.href=visibleLinkObj[i]["link"];
       line.append(it);
-      ulTag.prepend(line);       
+      ulTag.append(line);     
+      
+      var horizontalLine = document.createElement("hr")
+      horizontalLine.setAttribute("class", "horL")
+      ulTag.append(horizontalLine);
   }
-
-
-
-  // }
 }
 
 // filter links and reshow links
@@ -87,41 +57,15 @@ function filterLinks() {
   showLinks();
 }
 
-//initialize all variables
-// chrome.runtime.onMessage.addListener(function (msg, _, sendResponse) {
-//   alert(msg.greeting)
-//   test = msg.greeting;
-//   allInfo = [...JSON.parse(msg.greeting)];
-//   allInfo.forEach((i) => {
-//     allLinks.push(i.link);
-//   });
-//   visibleLinkObj = [...allInfo];
-//   showLinks();
-//   sendResponse({ farewell: visibleLinkObj }); //test
-// });
-var thing =localStorage.getItem("stuff");
-allInfo=JSON.parse(thing);
+// get the links and populate the lists
+var docLinks = localStorage.getItem("links");
+allInfo = JSON.parse(docLinks);
 allInfo.forEach((i) => {
   console.log(i.link);
   visibleLinkObj.push(i);  
 });
 showLinks();
 
-
-// Set up event handlers and inject send_links.js into all frames in the active tab
-// window.onload = () => {
   
-  document.getElementById('filter').onkeyup = filterLinks;
+document.getElementById('filter').onkeyup = filterLinks;
 
-  // chrome.windows.getCurrent(function (currentWindow) {
-  //   chrome.tabs.query(
-  //     { active: true, currentWindow: true },
-  //     function (activeTabs) {
-        // chrome.tabs.executeScript(activeTabs[0].id, {
-        //   file: 'send_links.js',
-        //   allFrames: true,
-        // });
-  //     }
-  //   );
-  // });
-// };

@@ -8,23 +8,30 @@ bar.setAttribute("class", "sidebar");
 bar.setAttribute("id", "1");
 body.prepend(bar);
 
-// add the filter option to the bar
+// add the filter box to the bar
 var filterSearch = document.createElement("input");
 filterSearch.setAttribute("type", "text");
+filterSearch.setAttribute("placeholder", "Filter")
 filterSearch.setAttribute("id", "filter");
 filterSearch.setAttribute("class", "filter");
 bar.prepend(filterSearch);
 
+// add space after the filter box
+var space = document.createElement("div")
+space.innerText = ".";
+bar.append(space);
+
 // add unordered list element to the bar
 var content = document.createElement("ul");
 content.setAttribute("id", "contents")
-bar.prepend(content)
+content.setAttribute("class", "contents")
+bar.append(content)
 
 
 // create a tab on the side of the bar menu to be able to close the bar menu
 var tab = document.createElement("button");
 tab.setAttribute("class", "bartab");
-tab.style.left = "12em";
+tab.style.left = "13em";
 tab.style.top = "2.5em";
 bar.prepend(tab);
 

@@ -1,5 +1,4 @@
-// Send back to the popup a deduped list of valid link URLs on this page.
-// The popup injects this script into all frames in the active tab.
+// store the links in local storage
 
 /*
 Note: use 'var' instead of 'let' or 'const'.
@@ -101,14 +100,7 @@ var sortedTitle = sortedRawTitle.filter((t) => {
 // console.log('=====================');
 // console.log('sortedTitleObj', sortedTitleObj);
 
-chrome.runtime.sendMessage(
-  { greeting: JSON.stringify(sortedTitleObj) },
-  function (response) {
-    // console.log('send successfully');
-    console.log('send successfully', response.farewell); //test
-  }
-  );
-localStorage.setItem("stuff",JSON.stringify(sortedTitleObj));
+localStorage.setItem("links",JSON.stringify(sortedTitleObj));
 
 
 

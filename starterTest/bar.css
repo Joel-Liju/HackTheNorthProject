@@ -6,9 +6,9 @@
     border-style: solid;
     border-color: rgb(30, 111, 187);
     /* padding: 1px; */
-    width: 12em;
+    width: 13em;
     font-family: arial, sans-serif;
-    height: 30em;
+    /* height: 30em; */
     overflow-wrap: break-word;
     -webkit-box-shadow: 1px 1px 10px rgb(30, 111, 187);;  
 }
@@ -32,4 +32,19 @@
     width: 10em;
     left: 10px;
     top: 10px;
+}
+
+.contents{
+    position: relative;
+    left: 10px;
+    top: 12px;
+}
+
+.horL{
+    width: 70%;
+    border-color: rgb(55, 117, 199);
+    position: relative;
+    left: 15px;
+    -webkit-box-shadow: 1px 1px 2px rgb(85, 125, 161);
+
 }
