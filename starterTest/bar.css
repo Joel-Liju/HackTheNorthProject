@@ -16,7 +16,7 @@
   padding: 1rem 0;
   width: 13em;
   overflow-wrap: break-word;
-  transition: 0.5s all ease-in-out;
+  transition: 0.1s all ease-in-out;
 }
 
 .bartab {

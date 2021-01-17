@@ -1,7 +1,7 @@
-let allLinks = [];
-let visibleLinkObj = [];
-let test = '';
-let allInfo = [];
+var allLinks = [];
+var visibleLinkObj = [];
+var test = '';
+var allInfo = [];
 
 // Display all links.
 function showLinks() {
