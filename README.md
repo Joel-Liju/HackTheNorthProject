@@ -1,4 +1,3 @@
-"# HackTheNorthProject" 
 <h1> Github Documentation Parser </h1>
 
 This Chrome extension gets all the headers of the documentation of a Github repository and conveniently puts them in a side menu for you!
